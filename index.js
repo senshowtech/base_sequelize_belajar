@@ -5,13 +5,13 @@ const port = 5000;
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const routesProduct = require("./src/routes/product");
-const routesCategory = require("./src/routes/category");
+const routesUser = require("./src/routes/user");
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/api/product", routesProduct);
-app.use("/api/category", routesCategory);
+app.use("/api/user", routesUser);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
