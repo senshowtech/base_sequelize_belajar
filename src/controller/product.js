@@ -20,3 +20,14 @@ exports.addProduk = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.getAllProduct = async (req, res) => {
+  try {
+    const productAll = await product.findAll();
+    return res.status(201).json({
+      productAll,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
