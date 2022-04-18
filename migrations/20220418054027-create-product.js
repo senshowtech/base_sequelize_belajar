@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       kurir: {
-        type: Sequelize.STRING,
+        type: Sequelize.JSON,
       },
       userId: {
         type: Sequelize.INTEGER,

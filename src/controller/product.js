@@ -31,3 +31,31 @@ exports.getAllProduct = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.editProduct = async (req, res) => {
+  try {
+    let { nama_product, harga, qty, kurir, image, deskripsi, userId } =
+      req.body;
+    await product.update(
+      {
+        nama_product: nama_product,
+        deskripsi: deskripsi,
+        harga: harga,
+        qty: qty,
+        kurir: kurir,
+        image: image,
+        userId: userId,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    return res.status(201).json({
+      message: "terupdate",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
