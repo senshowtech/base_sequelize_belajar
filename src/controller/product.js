@@ -1,4 +1,4 @@
-const { product } = require("../../models");
+const { product, user } = require("../../models");
 
 exports.addProduk = async (req, res) => {
   try {
@@ -70,6 +70,30 @@ exports.deleteProduct = async (req, res) => {
     });
     return res.status(201).json({
       message: "terhapus",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.getProductWithUser = async (req, res) => {
+  try {
+    let data = await product.findAll({
+      include: [
+        {
+          model: user,
+          as: "user",
+          attributes: {
+            exclude: ["createdAt", "updatedAt", "password"],
+          },
+        },
+      ],
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    });
+    return res.status(201).json({
+      data,
     });
   } catch (error) {
     console.log(error);
