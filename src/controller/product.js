@@ -59,3 +59,19 @@ exports.editProduct = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.deleteProduct = async (req, res) => {
+  try {
+    const id = req.params.id;
+    await product.destroy({
+      where: {
+        id: id,
+      },
+    });
+    return res.status(201).json({
+      message: "terhapus",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
